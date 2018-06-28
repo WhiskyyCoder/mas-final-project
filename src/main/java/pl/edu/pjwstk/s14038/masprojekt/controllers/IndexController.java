@@ -17,7 +17,6 @@ import pl.edu.pjwstk.s14038.masprojekt.services.UzytkownikService;
 import pl.edu.pjwstk.s14038.masprojekt.validators.WybierzDateValidator;
 
 import javax.validation.Valid;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.List;
@@ -42,8 +41,7 @@ public class IndexController {
 
     @RequestMapping("/dodaj")
     public String dodajUzytkownika() {
-        // Uzytkownik uzytkownik=uzytkownikService.getUzytkownikRepository().findById(new Long(1)).get();
-        Uzytkownik uzytkownik = Uzytkownik.dodajWlasciciela(uzytkownikService, null, "321321", "Jan", "Kowalski","test@pjwstk.edu.pl","ala");
+        Uzytkownik uzytkownik = Uzytkownik.dodajWlasciciela(uzytkownikService, null, "321321", "Jan", "Kowalski", "test@pjwstk.edu.pl", "ala");
         Kwatera kwatera = new Kwatera("Przyjazna chatka", "ALEJA. 29 LISTOPADA, 35-334 Kraków", 3, uzytkownik);
         Pokoj p1 = new Pokoj(3, "30x20x30");
         Pokoj p2 = new Pokoj(4, "40x20x30");
@@ -52,10 +50,6 @@ public class IndexController {
         kwatera.dodajPokoj(rezerwacjaService, p2);
         kwatera.dodajPokoj(rezerwacjaService, p3);
 
-
-//        for(Kwatera k:uzytkownik.getKwatery()){
-//            System.out.println(" "+k.getPokoje());
-//        }
 
         return "index";
     }
@@ -125,7 +119,7 @@ public class IndexController {
         rezerwacja.setPokoje(pokoje);
         rezerwacjaService.getRezerwacjaRepository().save(rezerwacja);
 
-        model.addAttribute("rezerwacja",rezerwacja);
+        model.addAttribute("rezerwacja", rezerwacja);
 
         return "podsumowanie";
     }

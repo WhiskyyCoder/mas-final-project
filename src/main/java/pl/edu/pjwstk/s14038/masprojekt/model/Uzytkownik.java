@@ -60,7 +60,7 @@ public class Uzytkownik {
         return uzytkownik;
     }
 
-    //opcjonalane
+
     public String getNip() {
         if (nip == null)
             return "Brak nip";
